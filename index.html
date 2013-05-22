@@ -46,7 +46,7 @@
     </div>
     <a name="create"></a>
     <div class="scrollblock block-create">
-        <a href="https://github.com/new"><h2>创建一个名称为 username.github.com的仓库 </h2></a>
+        <a href="https://github.com/new"><h2>创建一个仓库，命名为<br/> username.github.com </h2></a>
         <p>
             其中username为你在github的用户名<br />
             注意只有以这个名字命名该仓库，github才能自动将其识别为你的主页<br/>
@@ -58,7 +58,6 @@
         <h2>下载安装ruby</h2>
         <h3><a style="font-size:33px;" href="http://rubyforge.org/frs/download.php/76952/rubyinstaller-1.9.3-p429.exe">点击这里下载安装ruby193</a><br /></h3>
         <p>
-            
             <font style="color:Black">添加环境变量RUBY_HOME为你的ruby安装目录（如D:\Ruby193）</font>
             <font style="color:Black"><br />在环境变量PATH后追加";%RUBY_HOME%\bin"(引号不用输入)</font>
         </p>
@@ -68,68 +67,60 @@
         <h2>安装并配置DevKit</h2>
         <p>
             <a style="font-size:40px;color:White;"href="https://github.com/downloads/oneclick/rubyinstaller/DevKit-tdm-32-4.5.2-20111229-1559-sfx.exe">
-                点击这里下载DevKit-tdm-32-4.5.2
-                <br/>如果你选择使用其他版本的ruby,<br/>请到官网下载对应版本的DevKit</a>
+                点击这里下载DevKit-tdm-32-4.5.2<br/></a>
+                <a style="font-size:40px;color:White;"<br/>如果你选择使用其他版本的ruby,<br/>请到官网下载对应版本的DevKit</a>
         </p>
     </div>
     <a name="add"></a>
     <div class="scrollblock block-add">
-        <h2>安装bundler</h2>
+        <h2>从github上clone octopress到本地</h2>
         <p>
-		    你可以计划改动（把它们添加到缓存区），使用如下命令：<br />
-            <code>git add &lt;filename&gt;</code><br />
-            <code>git add *</code><br />
-            这是 git 基本工作流程的第一步；使用如下命令以实际提交改动：<br />
-            <code>git commit -m "代码提交信息"</code><br />
-            现在，你的改动已经提交到了 <b>HEAD</b>，但是还没到你的远端仓库。
+            <code>git clone git://github.com/imathis/octopress.git octopress</code><br />
+            <code>cd octopress   </code><br />
+            <code>ruby --version  # Should report Ruby 1.9.3</code>
         </p>
     </div>
     <a name="push"></a>
     <div class="scrollblock block-remote">
-        <h2>从github上clone octopress到本地 </h2>
+        <h2>修改gem和bundle的源</h2>
         <p>
-            你的改动现在已经在本地仓库的 <b>HEAD</b> 中了。执行如下命令以将这些改动提交到远端仓库：<br />
-            <code>git push origin master</code><br />
-            可以把 <i>master</i> 换成你想要推送的任何分支。
-            <br /><br />
-            如果你还没有克隆现有仓库，并欲将你的仓库连接到某个远程服务器，你可以使用如下命令添加：<br />
-            <code>git remote add origin &lt;server&gt;</code><br />
-            如此你就能够将你的改动推送到所添加的服务器上去了。<br />
+            由于众所周知的原因，rubygems.org无法访问，<br />
+            因此需要把gem和bundle的源改为国内的镜像。<br/>
+            修改gem源<br/>
+            <code>$gem sources --remove "https://rubygems.org/"</code><br />
+            <code>$ gem sources -a "http://ruby.taobao.org/"</code><br />
+            <code>$ gem sources -l</code><br />
+            <code>*** CURRENT SOURCES ***</code><br />
+            <code>http://ruby.taobao.org</code><br />
+            <code># 请确保只有 ruby.taobao.org</code><br />
+            修改octopress项目bundle源<br/>
+            将上一步clone下来的octopress中Gemfile文件的source改为http://ruby.taobao.org<br />
+            <code>source "http://ruby.taobao.org"</code>
 
+
+                
         </p>
     </div>
     <a name="branching"></a>
     <div class="scrollblock block-branching">
-        <h2>修改octopress目录下的gemFile的源</h2>
+        <h2>安装依赖项</h2>
         <p>
-    		分支是用来将特性开发绝缘开来的。在你创建仓库的时候，<i>master</i> 是“默认的”。在其他分支上进行开发，完成后再将它们合并到主分支上。
+    		<code>gem install bundler</code><br />
+            <code>bundle install</code><br />
+            安装Octopress的默认主题<br />
+            <code>rake install</code>
 		</p>
-        <img src="img/branches.png" alt="" />
-        <p>
-            创建一个叫做“feature_x”的分支，并切换过去：<br />
-            <code>git checkout -b feature_x</code><br />
-            切换回主分支：<br />
-            <code>git checkout master</code><br />
-            再把新建的分支删掉：<br />
-            <code>git branch -d feature_x</code><br />
-			除非你将分支推送到远端仓库，不然该分支就是 <i>不为他人所见的</i>：<br />
-            <code>git push origin &lt;branch&gt;</code>
-        </p>
     </div>
     <a name="update"></a>
     <div class="scrollblock block-merging">
-        <h2>修改 LANG LC_ALL</h2>
+        <h2>配置环境变量 LANG 和 LC_ALL</h2>
         <p>
-            要更新你的本地仓库至最新改动，执行：<br />
-            <code>git pull</code><br />
-            以在你的工作目录中 <i>获取（fetch）</i> 并 <i>合并（merge）</i> 远端的改动。<br />
-            要合并其他分支到你的当前分支（例如 master），执行：<br />
-            <code>git merge &lt;branch&gt;</code><br />
-            两种情况下，git 都会尝试去自动合并改动。不幸的是，自动合并并非次次都能成功，并可能导致 <i>冲突（conflicts）</i>。
-            这时候就需要你修改这些文件来人肉合并这些 <i>冲突（conflicts）</i> 了。改完之后，你需要执行如下命令以将它们标记为合并成功：<br />
-            <code>git add &lt;filename&gt;</code><br />
-            在合并改动之前，也可以使用如下命令查看：<br />
-            <code>git diff &lt;source_branch&gt; &lt;target_branch&gt;</code>
+            配置这两个环境变量的目的是避免<br />
+            下一步出现因字符编码而导致的错误<br/>
+            请在Git Bash中敲入以下命令：<br />
+            <code>set $LANG=zh_CN.UTF-8</code><br />
+            <code>set $LC_ALL=zh_CN.UTF-8</code><br />
+            <code>echo "export LANG LC_ALL">~/.bash_profile</code><br />
         </p>
     </div>
     <a name="tagging"></a>
