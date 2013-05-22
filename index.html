@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>git - the simple guide - no deep shit!</title>
+	<title>octopress中国行</title>
     <link href='http://fonts.googleapis.com/css?family=Chelsea+Market' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/normalize.css" type="text/css">
 	<link rel="stylesheet" href="css/style.css" type="text/css">
@@ -28,11 +28,12 @@
     <div class="scrollblock block-title">
         <h1>octopress中国行</h1>
         <p>由于众所周知的原因，octopress的安装和使用可能和官方说明有些不同的地方，本文记录了在github上使用octopress搭建博客的过程。</p>
-        <a href="http:fingerliu.github.com" class="twitter-share-button" data-via="rogerdudler" data-size="large" data-url="http://rogerdudler.github.com/git-guide" data-related="rogerdudler" data-hashtags="git">my blog</a>
+        <a href="http://fingerliu.github.com"><h3>my blog</h3></a>
         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
         <p class="meta">
             作者：<a href="http://fingerliu.github.com">刘鹏</a>
             <br />感谢：<a>罗杰·杜德勒 </a><a href="http://www.twitter.com/tfnico">@tfnico</a>, <a href="http://www.twitter.com/fhd">@fhd</a> and <a href="http://www.namics.com">Namics</a><br />
+        <h1>请注意以下<br/>所有操作均在windows7中完成</h1>
         <img src="img/arrow.png" alt="" />
     </div>
     <!-- setup -->
@@ -45,30 +46,31 @@
     </div>
     <a name="create"></a>
     <div class="scrollblock block-create">
-        <h2>创建一个名称为 username.github.com的仓库 </h2>
+        <a href="https://github.com/new"><h2>创建一个名称为 username.github.com的仓库 </h2></a>
         <p>
-            创建新文件夹，打开，然后执行 <br />
-            <code>git init</code><br />
-            以创建新的 git 仓库。
+            其中username为你在github的用户名<br />
+            注意只有以这个名字命名该仓库，github才能自动将其识别为你的主页<br/>
+            否则你建立的博客将不能通过username.github.com访问到。
         </p>
     </div>
     <a name="checkout"></a>
     <div class="scrollblock block-checkout">
         <h2>下载安装ruby</h2>
+        <h3><a style="font-size:33px;" href="http://rubyforge.org/frs/download.php/76952/rubyinstaller-1.9.3-p429.exe">点击这里下载安装ruby193</a><br /></h3>
         <p>
-            执行如下命令以创建一个本地仓库的克隆版本：<br />
-			<code>git clone /path/to/repository</code> <br />
-            如果是远端服务器上的仓库，你的命令会是这个样子：<br />
-            <code>git clone username@host:/path/to/repository</code>
+            
+            <font style="color:Black">添加环境变量RUBY_HOME为你的ruby安装目录（如D:\Ruby193）</font>
+            <font style="color:Black"><br />在环境变量PATH后追加";%RUBY_HOME%\bin"(引号不用输入)</font>
         </p>
     </div>
     <a name="trees"></a>
     <div class="scrollblock block-trees">
         <h2>安装并配置DevKit</h2>
         <p>
-            你的本地仓库由 git 维护的三棵“树”组成。第一个是你的 <code>工作目录</code>，它持有实际文件；第二个是 <code>缓存区（Index）</code>，它像个缓存区域，临时保存你的改动；最后是 <code>HEAD</code>，指向你最近一次提交后的结果。
+            <a style="font-size:40px;color:White;"href="https://github.com/downloads/oneclick/rubyinstaller/DevKit-tdm-32-4.5.2-20111229-1559-sfx.exe">
+                点击这里下载DevKit-tdm-32-4.5.2
+                <br/>如果你选择使用其他版本的ruby,<br/>请到官网下载对应版本的DevKit</a>
         </p>
-        <img src="img/trees.png" alt="" />
     </div>
     <a name="add"></a>
     <div class="scrollblock block-add">
@@ -193,21 +195,16 @@
             </ul>
         </p>
     </div>
-    <div class="announcement">
-        <a href="http://frontify.com/?utm_source=gitguide&amp;utm_campaign=founder">
-            <img src="http://d13bhd1byokz0o.cloudfront.net/ad/clarify-announcement-git@2x.png" width="960" height="100" alt="Clarify" />
-        </a>
-    </div>
     <a name="comments"></a>
     <div class="scrollblock block-comments">
         <h2>评论</h2>
         <div id="disqus_thread"></div>
         <script type="text/javascript">
             /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-            var disqus_shortname = 'git-the-simple-guide'; // required: replace example with your forum shortname
+            var disqus_shortname = 'octopress-guide'; // required: replace example with your forum shortname
 
             /* * * DON'T EDIT BELOW THIS LINE * * */
-            (function() {
+            (function () {
                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
                 dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
                 (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
